@@ -67,6 +67,7 @@ class PaymentModule:
     def validate_branch_limit(self, subscription_tier, num_branches):
         """
         Validates that the number of branches does not exceed limits.
+        handles upgrade and downgrades of subscription tiers.
         """
         if num_branches > self.MAX_BRANCHES_PER_ACTION:
             print(f"Error: You cannot add more than {self.MAX_BRANCHES_PER_ACTION} branches at once.")
