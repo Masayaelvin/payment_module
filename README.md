@@ -1,7 +1,3 @@
-Here's a comprehensive **Markdown** documentation for your **Payment Module** project. This can be saved as `README.md` for your GitHub repository.
-
----
-
 # Payment Module with Daraja API Integration
 
 This project provides a Python-based **M-Pesa Daraja API Payment Module** for managing vendor subscription payments and handling edge cases like branch limits, payment failures, and subscription downgrades.
@@ -19,8 +15,6 @@ This project provides a Python-based **M-Pesa Daraja API Payment Module** for ma
 7. [Edge Cases Handled](#edge-cases-handled)  
 8. [Error Handling](#error-handling)  
 9. [Testing Locally](#testing-locally)  
-10. [License](#license)
-
 ---
 
 ## Overview
@@ -76,32 +70,13 @@ Before using this module, ensure you have:
    pip install requests
    ```
 
-3. **Set Up Flask for Callbacks**:
-
-   Create a `callback_server.py` file with the following content:
-
-   ```python
-   from flask import Flask, request, jsonify
-
-   app = Flask(__name__)
-
-   @app.route('/callback', methods=['POST'])
-   def callback():
-       data = request.get_json()
-       print("Callback received:", data)
-       return jsonify({"message": "Callback received successfully"}), 200
-
-   if __name__ == '__main__':
-       app.run(port=5000, debug=True)
-   ```
-
-4. **Run Flask Server**:
+3. **Run Flask Server**:
 
    ```bash
    python callback_server.py
    ```
 
-5. **Expose Local Server via ngrok**:
+4. **Expose Local Server via ngrok**:
 
    ```bash
    ngrok http 5000
@@ -113,7 +88,7 @@ Before using this module, ensure you have:
 
 ## Configuration
 
-Create a `config.json` file to store your Daraja API credentials securely:
+Create a `.env` file to store your Daraja API credentials securely:
 
 ```json
 {
@@ -175,7 +150,7 @@ Error: You cannot add more than 10 branches at once.
 
 ### 2. Payment Failure and Grace Period
 
-If a payment fails due to reasons like insufficient funds, the system starts a **7-day grace period** for the vendor to retry the payment.
+If a payment fails due to insufficient funds, the system starts a **7-day grace period** for the vendor to retry the payment.
 
 ```plaintext
 Payment failed. A grace period of 7 days has started.
@@ -232,12 +207,6 @@ The following errors are handled gracefully:
 
 ---
 
-## License
-
-This project is licensed under the **MIT License**.
-
----
-
 ## Contribution
 
 Feel free to fork this repository and contribute by submitting a pull request. For major changes, please open an issue first to discuss what you'd like to change.
@@ -248,9 +217,6 @@ Feel free to fork this repository and contribute by submitting a pull request. F
 
 For any inquiries, contact me at:
 
-- **Email**: [your-email@example.com](mailto:your-email@example.com)  
-- **GitHub**: [your-username](https://github.com/your-username)
+- **Email**: [masayaelvin@gmail.com](mailto:your-email@example.com)  
+- **GitHub**: [Masayaelvin](https://github.com/Masayaelvin)
 
---- 
-
-This documentation covers all the essentials for setting up, configuring, and running the payment module with detailed usage and edge case explanations. 🚀
