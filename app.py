@@ -173,7 +173,7 @@ if __name__ == "__main__":
     consumer_key = os.getenv("CONSUMER_KEY")
     consumer_secret = os.getenv("CONSUMER_SECRET")
     shortcode = "600977"  
-    passkey = "passkey"
+    passkey = os.getenv("PASSKEY")
     callback_url = "http://127.0.0.1:5000/callback"
 
     # Vendor payment details
