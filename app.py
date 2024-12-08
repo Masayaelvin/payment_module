@@ -33,8 +33,12 @@ class PaymentModule:
         try:
             response = requests.get(self.token_url, auth=(self.consumer_key, self.consumer_secret))
             response.raise_for_status()
+            access_token_t = response.json()
             access_token = response.json().get('access_token')
-            print(access_token)
+            if not access_token:
+                print(f"Error: No access token found in the response. Full response: {response.json()}")
+            else:
+                print(f"Access Token Retrieved: {access_token_t}")
             return access_token
         except requests.RequestException as e:
             print(f"Error fetching access token: {e}")
@@ -133,7 +137,7 @@ class PaymentModule:
             response_data = response.json()
             print(f"STK Push Response: {response_data}")
 
-            # Simulate handling payment failure with a retry and grace period
+            #  handling payment failure with a retry and grace period
             if response_data.get("ResponseCode") != "0":
                 self.handle_payment_failure()
             else:
@@ -165,14 +169,14 @@ if __name__ == "__main__":
     # Daraja API credentials and configuration
     consumer_key = "58v5fT7C3MGG766SAD8JUpaugA1mpyRau5Wpg80WDEMYrCa5"
     consumer_secret = "StnNiH55l6LtNJvSyN4Snb0SLATtxTr29UGtekEoeoG2Bd7AR6SjOqY8QfIeE0os"
-    shortcode = "123456"  
+    shortcode = ""  
     passkey = "passkey"
     callback_url = "http://127.0.0.1:5000/callback"
 
     # Vendor payment details
     phone_number = "254727200114"
     subscription_tier = "pro"
-    num_branches = 5  # Try adjusting this to exceed limits for testing
+    num_branches = 5  
 
     # Create an instance of the payment module
     payment_module = PaymentModule(consumer_key, consumer_secret, shortcode, passkey, callback_url)
