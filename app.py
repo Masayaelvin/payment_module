@@ -3,7 +3,9 @@ import base64
 import os
 from datetime import datetime, timedelta
 import re
-import time
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class PaymentModule:
     SUBSCRIPTION_TIERS = {
