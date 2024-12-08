@@ -1,6 +1,6 @@
 import requests
 import base64
-import json
+import os
 from datetime import datetime, timedelta
 import re
 import time
@@ -167,9 +167,9 @@ class PaymentModule:
 # Example usage
 if __name__ == "__main__":
     # Daraja API credentials and configuration
-    consumer_key = "58v5fT7C3MGG766SAD8JUpaugA1mpyRau5Wpg80WDEMYrCa5"
-    consumer_secret = "StnNiH55l6LtNJvSyN4Snb0SLATtxTr29UGtekEoeoG2Bd7AR6SjOqY8QfIeE0os"
-    shortcode = ""  
+    consumer_key = os.getenv("CONSUMER_KEY")
+    consumer_secret = os.getenv("CONSUMER_SECRET")
+    shortcode = "600977"  
     passkey = "passkey"
     callback_url = "http://127.0.0.1:5000/callback"
 
